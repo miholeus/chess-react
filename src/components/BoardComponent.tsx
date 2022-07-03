@@ -17,7 +17,7 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard}) => {
     if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
       selectedCell.moveFigure(cell);
       setSelectedCell(null);
-    } else if (cell.figure) {
+    } else {
       setSelectedCell(cell);
     }
   }
@@ -29,8 +29,8 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard}) => {
   function highlightCells() {
     if (selectedCell !== undefined) {
       board.highlightCells(selectedCell);
+      updateBoard();
     }
-    updateBoard();
   }
 
   function updateBoard() {
