@@ -6,10 +6,12 @@ import { Knight } from "./figures/Knight";
 import { Pawn } from "./figures/Pawn";
 import { Queen } from './figures/Queen';
 import { Rook } from "./figures/Rook";
-import { useEffect } from 'react';
+import { Figure } from "./figures/Figure";
 
 export class Board {
   cells: Cell[][] = [];
+  lostBlackFigures: Figure[] = [];
+  lostWhiteFigures: Figure[] = [];
   
   public getCopyBoard(): Board {
     const newBoard = new Board();
