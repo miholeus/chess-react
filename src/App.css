@@ -41,3 +41,15 @@
   /* background-color:  #eed4ac; */
   background-color: rgb(230, 230, 230);
 }
+
+.selected {
+  background-color: brown;
+}
+
+.available {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #1eb81e;
+
+}

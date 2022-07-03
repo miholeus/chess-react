@@ -6,10 +6,25 @@ import { Knight } from "./figures/Knight";
 import { Pawn } from "./figures/Pawn";
 import { Queen } from './figures/Queen';
 import { Rook } from "./figures/Rook";
+import { useEffect } from 'react';
 
 export class Board {
   cells: Cell[][] = [];
-
+  
+  public getCopyBoard(): Board {
+    const newBoard = new Board();
+    newBoard.cells = this.cells;
+    return newBoard;
+  }
+  public highlightCells(selectedCell: Cell | null) {
+    for (let i = 0; i < this.cells.length; i++) {
+      const row = this.cells[i];
+      for (let j = 0; j < row.length; j++) {
+        const target = row[j];
+        target.available = !!selectedCell?.figure?.canMove(target);
+      }
+    }
+  }
   /**
    * initCells
    */
@@ -44,10 +59,10 @@ export class Board {
   }
 
   private addBishops() {
-    new Bishop(Colors.BLACK, this.getCell(1, 0));
-    new Bishop(Colors.BLACK, this.getCell(6, 0));
-    new Bishop(Colors.WHITE, this.getCell(1, 7));
-    new Bishop(Colors.WHITE, this.getCell(6, 7));
+    new Bishop(Colors.BLACK, this.getCell(2, 0));
+    new Bishop(Colors.BLACK, this.getCell(5, 0));
+    new Bishop(Colors.WHITE, this.getCell(2, 7));
+    new Bishop(Colors.WHITE, this.getCell(5, 7));
   }
 
   private addQueens() {
@@ -63,10 +78,10 @@ export class Board {
   }
 
   private addKnights() {
-    new Knight(Colors.BLACK, this.getCell(2, 0));
-    new Knight(Colors.BLACK, this.getCell(5, 0));
-    new Knight(Colors.WHITE, this.getCell(2, 7));
-    new Knight(Colors.WHITE, this.getCell(5, 7));
+    new Knight(Colors.BLACK, this.getCell(1, 0));
+    new Knight(Colors.BLACK, this.getCell(6, 0));
+    new Knight(Colors.WHITE, this.getCell(1, 7));
+    new Knight(Colors.WHITE, this.getCell(6, 7));
   }
   /**
    * addFigures
