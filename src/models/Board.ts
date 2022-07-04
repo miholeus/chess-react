@@ -16,6 +16,8 @@ export class Board {
   public getCopyBoard(): Board {
     const newBoard = new Board();
     newBoard.cells = this.cells;
+    newBoard.lostBlackFigures = this.lostBlackFigures;
+    newBoard.lostWhiteFigures = this.lostWhiteFigures;
     return newBoard;
   }
   public highlightCells(selectedCell: Cell | null) {
